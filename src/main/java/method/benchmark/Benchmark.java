@@ -67,14 +67,14 @@ public class Benchmark {
 
         long timeForConstructBruteForce = Benchmark.benchmarkConstruct(bruteForceMethod, rectangles);
         long timeForConstructMap = 0;
-        if (number <= 2500) {
+        if (number <= 5000) {
             timeForConstructMap = Benchmark.benchmarkConstruct(mapBuildingMethod, rectangles);
         }
         long timeForConstructTree = Benchmark.benchmarkConstruct(segmentTreeMethod, rectangles);
 
         long timeForBruteForce = Benchmark.benchmark(bruteForceMethod, rectangles, points);
         long timeForMap = 0;
-        if (number <= 2500) {
+        if (number <= 5000) {
             timeForMap = Benchmark.benchmark(mapBuildingMethod, rectangles, points);
         }
 
@@ -83,14 +83,14 @@ public class Benchmark {
 
         System.out.println("Construct speed where N = " + number);
         System.out.println("Brute force: " + timeForConstructBruteForce);
-        if (number <= 2500) {
+        if (number <= 5000) {
             System.out.println("Map: " + timeForConstructMap);
         }
         System.out.println("Tree: " + timeForConstructTree);
         System.out.println("---------------------------------------------------");
         System.out.println("Algo speed where N = " + number);
         System.out.println("Brute force: " + timeForBruteForce);
-        if (number <= 2500) {
+        if (number <= 5000) {
             System.out.println("Map: " + timeForMap);
         }
         System.out.println("Tree: " + timeForTree);
@@ -100,18 +100,24 @@ public class Benchmark {
     public static void runTests(BruteForceMethod bruteForceMethod, MapBuildingMethod mapBuildingMethod, SegmentTreeMethod segmentTreeMethod) {
         test(bruteForceMethod, mapBuildingMethod, segmentTreeMethod, 100);
         System.gc();
+        test(bruteForceMethod, mapBuildingMethod, segmentTreeMethod, 250);
+        System.gc();
+        test(bruteForceMethod, mapBuildingMethod, segmentTreeMethod, 500);
+        System.gc();
         test(bruteForceMethod, mapBuildingMethod, segmentTreeMethod, 1000);
         System.gc();
+        test(bruteForceMethod, mapBuildingMethod, segmentTreeMethod, 1500);
+        System.gc();
+        test(bruteForceMethod, mapBuildingMethod, segmentTreeMethod, 2000);
+        System.gc();
         test(bruteForceMethod, mapBuildingMethod, segmentTreeMethod, 2500);
+        System.gc();
+        test(bruteForceMethod, mapBuildingMethod, segmentTreeMethod, 3750);
         System.gc();
         test(bruteForceMethod, mapBuildingMethod, segmentTreeMethod, 5000);
         System.gc();
         test(bruteForceMethod, mapBuildingMethod, segmentTreeMethod, 7500);
         System.gc();
         test(bruteForceMethod, mapBuildingMethod, segmentTreeMethod, 10000);
-        System.gc();
-        test(bruteForceMethod, mapBuildingMethod, segmentTreeMethod, 15000);
-        System.gc();
-        test(bruteForceMethod, mapBuildingMethod, segmentTreeMethod, 20000);
     }
 }
